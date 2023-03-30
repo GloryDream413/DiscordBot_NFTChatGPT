@@ -8,7 +8,7 @@ const client = new Discord.Client({
     intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES]
 });
 
-const prompt = "Hello, I'm a chatbot. What would you like to talk about?";
+const prompt = "Hello, I'm a ChatBot. What would you like to talk about?";
 const chatbotParams = {
   temperature: 0.7,
   maxTokens: 3000,
@@ -53,17 +53,16 @@ client.on('messageCreate', async (message) => {
       const responseText = "👋Hello there!\n\n"
                             + "You can chat with this bot, using [AiHey](https://aihey.co)\n\n"
                             + "**Example:** Send a message like\n"
-                            + "*/heychat I'd like to know about you*\n\n"
+                            + "*/nftchat I'd like to know about you*\n\n"
                             + "Enjoy! 💖 #AiHey";
       await message.reply(responseText);
     } else if (message.content === '/help') {
         const responseText = "Send a message like\n"
-                            + "*/heychat I'd like to know about you*\n\n"
+                            + "*/nftchat I'd like to know about you*\n\n"
                             + "to chat with this bot."
       await message.reply(responseText);
-    } else if (messageContent === '/heychat') {
-        console.log(message);
-        let userText = message.content.replace("/heychat", "");
+    } else if (messageContent === '/nftchat') {
+        let userText = message.content.replace("/nftchat", "");
         userText = userText.replace("\n", ".");
         let promptText = prompt + "\nUser: " + userText;
         const chatbotResponse = await generateResponse(promptText, chatbotParams);
@@ -71,10 +70,9 @@ client.on('messageCreate', async (message) => {
     }
     else if (message.content.length > 0 && message.author.username != 'MagicBot'){
         const responseText = "👋Hello there!\n\n"
-                            + "You can chat with this bot, using [AiHey](https://aihey.co)\n\n"
                             + "**Example:** Send a message like\n"
-                            + "*/heychat I'd like to know about you*\n\n"
-                            + "Enjoy! 💖 #AiHey"
+                            + "*/nftchat I'd like to know about you*\n\n"
+                            + "Enjoy! 💖"
         await message.reply(responseText);
     }
 });
